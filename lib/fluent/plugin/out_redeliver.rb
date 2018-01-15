@@ -41,7 +41,7 @@ class Fluent::RedeliverOutput < Fluent::Output
       es.each do |time, record|
         if (record)
           filter_record(tag, time, record)
-          Fluent::Engine.emit(newtag, time, record)
+          router.emit(newtag, time, record)
         end
       end
     end
